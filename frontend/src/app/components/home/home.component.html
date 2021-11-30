@@ -1,0 +1,42 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Libra Stores</h1>
+        <p class="lead text-muted">A Collection of Good and insightful Books on Technology and Programming.
+            Kindly Login to be able to Borrow and Return Book</p>
+    </div>
+</section>
+<div class="py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4" *ngFor="let book of books">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                        src="https://via.placeholder.com/225?text=Placeholder" />
+                    <div class="card-body">
+                        <p class="card-text">{{ (book.bookTitle.length > 30) ? (book.bookTitle | slice:0:30) + '...' :
+                            (book.bookTitle) }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button (click)="borrowAndReturnBook(book, 'borrow')" type="button"
+                                    class="btn btn-sm btn-outline-primary">Borrow
+                                </button>
+
+                                <button (click)="borrowAndReturnBook(book, 'return')"  type="button"
+                                    class="btn btn-sm btn-outline-secondary">Return
+                                </button>
+                            </div>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="books?.length == 0 || !books" class="col-md-12 alert alert-warning mt-3">
+            <span>There are no Available Book! </span>
+        </div>
+
+    </div>
+</div>
